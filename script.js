@@ -54,12 +54,12 @@ playCard = () => {
     if (userCard.value > computerCard.value) {
         userDeck.push(computerCard)
         computerDeck.shift()
-        userDeck.concat(spoilsOfWar)
+        userDeck.push(...spoilsOfWar)
     }
     if (userCard.value < computerCard.value) {
         computerDeck.push(userCard)
         userDeck.shift()
-        computerDeck.concat(spoilsOfWar)
+        computerDeck.push(...spoilsOfWar)
     }
     if (userCard.value === computerCard.value) {
        console.log("You tied, idiot")
