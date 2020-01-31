@@ -65,11 +65,18 @@ playCard = () => {
     }
     if (userCard.value === computerCard.value) {
        console.log("You tied, idiot")
-       warCards = (userDeck, computerDeck) =>
        spoilsOfWar.push(userCard)
        spoilsOfWar.push(computerCard)
-       spoilsOfWar.push(userDeck.splice(0, 3))
-       spoilsOfWar.push(computerDeck.splice(0, 3))
+       userDeck.shift()
+       computerDeck.shift()
+       spoilsOfWar.push(...userDeck.slice(0, 3))
+       spoilsOfWar.push(...computerDeck.slice(0, 3))
+       userDeck.shift()
+       userDeck.shift()
+       userDeck.shift()
+       computerDeck.shift()
+       computerDeck.shift()
+       computerDeck.shift()
        playCard();
        console.log(spoilsOfWar)
 }
