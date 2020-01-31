@@ -52,19 +52,23 @@ playCard = () => {
     let userCard = userDeck[0]
     let computerCard = computerDeck[0]
     if (userCard.value > computerCard.value) {
+        console.log(`${player1} won the hand`)
         userDeck.push(computerCard)
         userDeck.push(userDeck.shift())
         computerDeck.shift()
         userDeck.push(...spoilsOfWar)
+        
     }
     if (userCard.value < computerCard.value) {
+        console.log("The computer won the hand")
         computerDeck.push(userCard)
         computerDeck.push(computerDeck.shift())
         userDeck.shift()
         computerDeck.push(...spoilsOfWar)
+        
     }
     if (userCard.value === computerCard.value) {
-       console.log("You tied, idiot")
+       console.log("We have a tie. 1...2...3...WAR")
        spoilsOfWar.push(userCard)
        spoilsOfWar.push(computerCard)
        userDeck.shift()
