@@ -2,9 +2,12 @@ let cardDeck = []
 const cardNumbers = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", 'Queen', 'King', 'Ace']
 const cardSuits = ['♠', '♥️', '♣️', '♦️']
 let player1 = ""
+let userDeck = []
+let computerDeck = []
 setPlayer = (name) => { 
     player1 = name 
-    console.log("Welcome " + player1 + ". Let's get started!")
+    console.log("Welcome " + player1 + ". Type deal() to get started!")
+    
 }
 console.log("Welcome to War, set your name by typing setPlayer(YOUR NAME in quotes)")
 
@@ -36,4 +39,12 @@ shuffleDeck = (array) => {
    return array
 }
 
-shuffleDeck(cardDeck)
+
+deal = () => {
+    const readyDeck = shuffleDeck(cardDeck)
+   userDeck = readyDeck.slice(0, 26).map(i => i)
+   computerDeck = readyDeck.slice(26, readyDeck.length).map(j => j)
+   console.log('Ok! The cards are dealt. Let us begin!')
+}
+
+
