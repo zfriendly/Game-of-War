@@ -1,6 +1,13 @@
 let cardDeck = []
 const cardNumbers = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", 'Queen', 'King', 'Ace']
 const cardSuits = ['♠', '♥️', '♣️', '♦️']
+let player1 = ""
+setPlayer = (name) => { 
+    player1 = name 
+    console.log("Welcome " + player1 + ". Let's get started!")
+}
+console.log("Welcome to War, set your name by typing setPlayer(YOUR NAME in quotes)")
+
 
 makeDeck = () => {
  let fullDeck = cardSuits.map(suit => (
@@ -28,3 +35,5 @@ shuffleDeck = (array) => {
     }
    return array
 }
+
+shuffleDeck(cardDeck)
