@@ -4,6 +4,7 @@ const cardSuits = ['♠', '♥️', '♣️', '♦️']
 let player1 = ""
 let userDeck = []
 let computerDeck = []
+let spoilsOfWar = [] 
 setPlayer = (name) => { 
     player1 = name 
     console.log("Welcome " + player1 + ". Type deal() to get started!")
@@ -47,4 +48,27 @@ deal = () => {
    console.log('Ok! The cards are dealt. Let us begin!')
 }
 
-
+playCard = () => {
+    let userCard = userDeck[0]
+    let computerCard = computerDeck[0]
+    if (userCard.value > computerCard.value) {
+        userDeck.push(computerCard)
+        computerDeck.shift()
+        userDeck.concat(spoilsOfWar)
+    }
+    if (userCard.value < computerCard.value) {
+        computerDeck.push(userCard)
+        userDeck.shift()
+        computerDeck.concat(spoilsOfWar)
+    }
+    if (userCard.value === computerCard.value) {
+       console.log("You tied, idiot")
+       warCards = (userDeck, computerDeck) =>
+       spoilsOfWar.push(userCard)
+       spoilsOfWar.push(computerCard)
+       spoilsOfWar.splice(userDeck.splice(0, 3))
+       spoilsOfWar.splice(computerDeck.splice(0, 3))
+       playCard();
+       console.log(spoilsOfWar)
+}
+}
