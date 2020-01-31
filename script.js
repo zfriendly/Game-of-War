@@ -53,11 +53,13 @@ playCard = () => {
     let computerCard = computerDeck[0]
     if (userCard.value > computerCard.value) {
         userDeck.push(computerCard)
+        userDeck.push(userDeck.shift())
         computerDeck.shift()
         userDeck.push(...spoilsOfWar)
     }
     if (userCard.value < computerCard.value) {
         computerDeck.push(userCard)
+        computerDeck.push(computerDeck.shift())
         userDeck.shift()
         computerDeck.push(...spoilsOfWar)
     }
@@ -66,8 +68,8 @@ playCard = () => {
        warCards = (userDeck, computerDeck) =>
        spoilsOfWar.push(userCard)
        spoilsOfWar.push(computerCard)
-       spoilsOfWar.splice(userDeck.splice(0, 3))
-       spoilsOfWar.splice(computerDeck.splice(0, 3))
+       spoilsOfWar.push(userDeck.splice(0, 3))
+       spoilsOfWar.push(computerDeck.splice(0, 3))
        playCard();
        console.log(spoilsOfWar)
 }
