@@ -1,7 +1,7 @@
 let cardDeck = []
 const cardNumbers = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", 'Queen', 'King', 'Ace']
 const cardSuits = ['♠', '♥️', '♣️', '♦️']
-let player1 = "Zack"
+
 let userDeck = []
 let computerDeck = []
 let spoilsOfWar = [] 
@@ -11,7 +11,8 @@ let spoilsOfWar = []
     
 // }
 // console.log("Welcome to War, set your name by typing setPlayer(YOUR NAME in quotes)")
-
+prompt("What is your name?")
+let player1 = prompt("What is your name?")
 
 makeDeck = () => {
  let fullDeck = cardSuits.map(suit => (
@@ -86,6 +87,9 @@ playCard = () => {
        computerDeck.shift()
        computerDeck.shift()
        computerDeck.shift()
+    //    console.log(userDeck)
+    //    console.log(computerDeck)
+    //    console.log(spoilsOfWar)
        playCard();
 }
 
