@@ -1,16 +1,16 @@
 let cardDeck = []
 const cardNumbers = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", 'Queen', 'King', 'Ace']
 const cardSuits = ['♠', '♥️', '♣️', '♦️']
-let player1 = ""
+let player1 = "Zack"
 let userDeck = []
 let computerDeck = []
 let spoilsOfWar = [] 
-setPlayer = (name) => { 
-    player1 = name 
-    console.log("Welcome " + player1 + ". Type deal() to get started!")
+// setPlayer = (name) => { 
+//     player1 = name 
+//     console.log("Welcome " + player1 + ". Type deal() to get started!")
     
-}
-console.log("Welcome to War, set your name by typing setPlayer(YOUR NAME in quotes)")
+// }
+// console.log("Welcome to War, set your name by typing setPlayer(YOUR NAME in quotes)")
 
 
 makeDeck = () => {
@@ -51,23 +51,28 @@ deal = () => {
 playCard = () => {
     let userCard = userDeck[0]
     let computerCard = computerDeck[0]
-    if (userCard.value > computerCard.value) {
+    if (userDeck.length === 0 || computerDeck.length === 0) {
+        console.log("Game Over!")  
+    }
+    else if (userCard.value > computerCard.value) {
         console.log(`${player1} won the hand`)
         userDeck.push(computerCard)
         userDeck.push(userDeck.shift())
         computerDeck.shift()
         userDeck.push(...spoilsOfWar)
+        spoilsOfWar = []
         
     }
-    if (userCard.value < computerCard.value) {
+    else if (userCard.value < computerCard.value) {
         console.log("The computer won the hand")
         computerDeck.push(userCard)
         computerDeck.push(computerDeck.shift())
         userDeck.shift()
         computerDeck.push(...spoilsOfWar)
+        spoilsOfWar = []
         
     }
-    if (userCard.value === computerCard.value) {
+    else if (userCard.value === computerCard.value) {
        console.log("We have a tie. 1...2...3...WAR")
        spoilsOfWar.push(userCard)
        spoilsOfWar.push(computerCard)
@@ -82,6 +87,12 @@ playCard = () => {
        computerDeck.shift()
        computerDeck.shift()
        playCard();
-       console.log(spoilsOfWar)
 }
+
+}
+makeDeck()
+shuffleDeck(cardDeck)
+deal()
+while (userDeck.length > 0 && computerDeck.length > 0) {
+    playCard()
 }
