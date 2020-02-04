@@ -11,7 +11,6 @@ let spoilsOfWar = []
     
 // }
 // console.log("Welcome to War, set your name by typing setPlayer(YOUR NAME in quotes)")
-prompt("What is your name?")
 let player1 = prompt("What is your name?")
 
 makeDeck = () => {
@@ -52,29 +51,43 @@ deal = () => {
 playCard = () => {
     let userCard = userDeck[0]
     let computerCard = computerDeck[0]
-    if (userDeck.length === 0 || computerDeck.length === 0) {
+    if (userDeck.length === 0) {
+        computerDeck.push(...spoilsOfWar)
+        console.log(`${player1} has ${(userDeck.length)} cards. Computer has ${computerDeck.length} cards`)
+        console.log("Game Over!") 
+    }
+    else if (computerDeck.length === 0) {
+        userDeck.push(...spoilsOfWar)
+        console.log(`${player1} has ${userDeck.length} cards. Computer has ${computerDeck.length} cards`)
         console.log("Game Over!")  
     }
     else if (userCard.value > computerCard.value) {
-        console.log(`${player1} won the hand`)
+        console.log(`${player1} played ${userCard.card}, Computer played ${computerCard.card}.`)
+        console.log(`${player1} won the hand.`)
         userDeck.push(computerCard)
         userDeck.push(userDeck.shift())
         computerDeck.shift()
         userDeck.push(...spoilsOfWar)
         spoilsOfWar = []
+        console.log(`${player1} has ${userDeck.length} cards. Computer has ${computerDeck.length} cards`)
+
         
     }
     else if (userCard.value < computerCard.value) {
-        console.log("The computer won the hand")
+        console.log(`${player1} played ${userCard.card}, Computer played ${computerCard.card}.`)
+        console.log('The computer won the hand.')
         computerDeck.push(userCard)
         computerDeck.push(computerDeck.shift())
         userDeck.shift()
         computerDeck.push(...spoilsOfWar)
         spoilsOfWar = []
+        console.log(`${player1} has ${userDeck.length} cards. Computer has ${computerDeck.length} cards`)
+
         
     }
     else if (userCard.value === computerCard.value) {
-       console.log("We have a tie. 1...2...3...WAR")
+        console.log(`${player1} played ${userCard.card}, Computer played ${computerCard.card}.`)
+        console.log("We have a tie! I.....DE....CLARE.....WAR!")
        spoilsOfWar.push(userCard)
        spoilsOfWar.push(computerCard)
        userDeck.shift()
